@@ -47,7 +47,7 @@ class TestCreateUser:
     @allure.description("Тест проверяет, что нельзя зарегистрировать пользователя без email, пароля или имени.")
     @allure.severity(allure.severity_level.NORMAL)
 
-    @pytest.mark.parametrize("data_user", [User.auth_without_email, User.auth_without_password, User.auth_without_name])
+    @pytest.mark.parametrize("data_user", [User.reg_without_email, User.reg_without_password, User.reg_without_name])
     def test_new_user_invalid_registration(self, data_user):
         with allure.step("Подготовка данных с некорректными полями"):
             user_data = data_user

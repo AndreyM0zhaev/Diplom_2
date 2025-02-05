@@ -29,18 +29,18 @@ class User:
         "name": "Andrey"
     }
 
-    auth_without_email = {
+    reg_without_email = {
         "email": "",
         "password": "asdfgh123456!",
         "name": "Andrey"
     }
-    auth_without_password = {
+    reg_without_password = {
         "email": "Mozhaev.Andrey.v@yandex.ru",
         "password": "",
         "name": "Andrey"
     }
 
-    auth_without_name = {
+    reg_without_name = {
         "email": "Mozhaev.Andrey.v@yandex.ru",
         "password": "asdfgh123456!",
         "name": ""
