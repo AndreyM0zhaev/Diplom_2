@@ -1,5 +1,5 @@
 class Urls:
-    BASE_URL = 'https://stellarburgers.nomoreparties.site/'
+    BASE_URL = 'https://stellarburgers.nomoreparties.site'
 
 class Endpoints:
     headers = {"Content-Type": "application/json"}
