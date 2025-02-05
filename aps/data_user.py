@@ -6,26 +6,48 @@ class User:
 
     @staticmethod
     def registration_new_user():
-        name = faker.name()
-        email = faker.email()
-        password = faker.password()
-        user_data = {"login": email, "password": password, "name": name}
+        user_name = faker.name()
+        user_email = faker.email()
+        user_password = faker.password()
+        user_data = {"name": user_name, "email": user_email, "password": user_password}
         return user_data
 
 
     current_user = {
-        "login": "Andre",
-        "password": "1234"
+        "email": "Mozhaev.Andrey.v@yandex.ru",
+        "password": "asdfgh123456!"
     }
+
     not_reg_user = {
-        "login": "зло не дремлет",
-        "password": "666"
+        "email": "funky@punky.net",
+        "password": "777"
     }
-    auth_without_login = {
-        "login": "",
-        "password": "1234"
+
+    double_user = {
+        "email": "Mozhaev.Andrey.v@yandex.ru",
+        "password": "asdfgh123456!",
+        "name": "Andrey"
+    }
+
+    auth_without_email = {
+        "email": "",
+        "password": "asdfgh123456!",
+        "name": "Andrey"
     }
     auth_without_password = {
-        "login": "Andre",
-        "password": ""
+        "email": "Mozhaev.Andrey.v@yandex.ru",
+        "password": "",
+        "name": "Andrey"
+    }
+
+    auth_without_name = {
+        "email": "Mozhaev.Andrey.v@yandex.ru",
+        "password": "asdfgh123456!",
+        "name": ""
+    }
+
+    auth_with_update = {
+        "email": "Mozhaev.Andrey.v@yandex.ru",
+        "password": "asdfgh123456!",
+        "name": "Rndex"
     }
