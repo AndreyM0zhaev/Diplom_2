@@ -4,6 +4,7 @@ import allure
 
 from aps.endpoints import Urls, Endpoints
 from aps.data_user import User
+from aps.data_response import StatusCode, ResponseText
 
 
 @allure.epic("Stellar Burgers")
@@ -23,7 +24,7 @@ class TestCreateUser:
             response = requests.post(f'{Urls.BASE_URL}{Endpoints.CREATE_USER}', json=user_data)
 
         with allure.step("Проверка ответа"):
-            assert response.status_code == 200, f"Ожидался статус 200, получен {response.status_code}"
+            assert response.status_code == StatusCode.OK, f"Ожидался статус 200, получен {response.status_code}"
             assert response.json()["success"] is True, "Регистрация не удалась"
 
     @allure.story("Регистрация уже существующего пользователя")
@@ -39,8 +40,8 @@ class TestCreateUser:
             response = requests.post(f'{Urls.BASE_URL}{Endpoints.CREATE_USER}', json=user_data)
 
         with allure.step("Проверка ответа"):
-            assert response.status_code == 403, f"Ожидался статус 403, получен {response.status_code}"
-            assert 'User already exists' in response.text, "Сообщение об ошибке не содержит 'User already exists'"
+            assert response.status_code == StatusCode.FORBIDDEN, f"Ожидался статус 403, получен {response.status_code}"
+            assert ResponseText.CREATE_DOUBLE_USER in response.text, "Сообщение об ошибке не содержит 'User already exists'"
 
     @allure.story("Регистрация с некорректными данными")
     @allure.title("Попытка регистрации с некорректными данными")
@@ -56,5 +57,5 @@ class TestCreateUser:
             response = requests.post(f'{Urls.BASE_URL}{Endpoints.CREATE_USER}', json=user_data)
 
         with allure.step("Проверка ответа"):
-            assert response.status_code == 403, f"Ожидался статус 403, получен {response.status_code}"
+            assert response.status_code == StatusCode.FORBIDDEN, f"Ожидался статус 403, получен {response.status_code}"
             assert 'Email, password and name are required fields' in response.text, "Сообщение об ошибке не содержит 'Email, password and name are required fields'"

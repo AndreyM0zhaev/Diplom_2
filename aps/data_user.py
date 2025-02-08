@@ -1,6 +1,6 @@
 from faker import Faker
 
-faker = Faker()
+faker = Faker('ru_RU')
 
 class User:
 
@@ -9,9 +9,8 @@ class User:
         user_name = faker.name()
         user_email = faker.email()
         user_password = faker.password()
-        user_data = {"name": user_name, "email": user_email, "password": user_password}
+        user_data = {"email": user_email, "password": user_password, "name": user_name}
         return user_data
-
 
     current_user = {
         "email": "Mozhaev.Andrey.v@yandex.ru",
@@ -51,3 +50,4 @@ class User:
         "password": "asdfgh123456!",
         "name": "Rndex"
     }
+
