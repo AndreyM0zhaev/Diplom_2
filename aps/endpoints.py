@@ -7,3 +7,5 @@ class Endpoints:
     LOGIN = '/api/auth/login'
     UPDATE_USER = '/api/auth/user'
     DELETE_USER = '/api/auth/user'
+    CREATE_ORDER = '/api/orders'
+    GET_ORDERS = '/api/orders'

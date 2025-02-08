@@ -7,8 +7,10 @@ from aps.data_user import User
 from aps.data_response import StatusCode, ResponseText
 
 
+
 @allure.epic("Stellar Burgers")
 @allure.feature("Регистрация пользователя")
+
 class TestCreateUser:
 
     @allure.story("Успешная регистрация нового пользователя")
@@ -27,6 +29,7 @@ class TestCreateUser:
             assert response.status_code == StatusCode.OK, f"Ожидался статус 200, получен {response.status_code}"
             assert response.json()["success"] is True, "Регистрация не удалась"
 
+
     @allure.story("Регистрация уже существующего пользователя")
     @allure.title("Попытка регистрации существующего пользователя")
     @allure.description("Тест проверяет, что нельзя зарегистрировать пользователя с уже существующим email.")
@@ -42,6 +45,7 @@ class TestCreateUser:
         with allure.step("Проверка ответа"):
             assert response.status_code == StatusCode.FORBIDDEN, f"Ожидался статус 403, получен {response.status_code}"
             assert ResponseText.CREATE_DOUBLE_USER in response.text, "Сообщение об ошибке не содержит 'User already exists'"
+
 
     @allure.story("Регистрация с некорректными данными")
     @allure.title("Попытка регистрации с некорректными данными")
