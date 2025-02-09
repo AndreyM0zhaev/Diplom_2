@@ -7,7 +7,6 @@ from aps.data_user import User
 from aps.data_response import StatusCode, ResponseText
 
 
-
 @allure.epic("Stellar Burgers")
 @allure.feature("Регистрация пользователя")
 
@@ -27,7 +26,7 @@ class TestCreateUser:
 
         with allure.step("Проверка ответа"):
             assert response.status_code == StatusCode.OK, f"Ожидался статус 200, получен {response.status_code}"
-            assert response.json()["success"] is True, "Регистрация не удалась"
+            assert response.json()[ResponseText.SUCCESS] is True, "Регистрация не удалась"
 
 
     @allure.story("Регистрация уже существующего пользователя")
@@ -62,4 +61,4 @@ class TestCreateUser:
 
         with allure.step("Проверка ответа"):
             assert response.status_code == StatusCode.FORBIDDEN, f"Ожидался статус 403, получен {response.status_code}"
-            assert 'Email, password and name are required fields' in response.text, "Сообщение об ошибке не содержит 'Email, password and name are required fields'"
+            assert ResponseText.MISSING_REQUIRED_FIELD in response.text, "Сообщение об ошибке не содержит 'Email, password and name are required fields'"

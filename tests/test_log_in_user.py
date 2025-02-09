@@ -3,6 +3,7 @@ import allure
 
 from aps.endpoints import Urls, Endpoints
 from aps.data_user import User
+from aps.data_response import StatusCode, ResponseText
 
 
 @allure.epic("Stellar Burgers")
@@ -22,8 +23,8 @@ class TestLogin:
             response = requests.post(f'{Urls.BASE_URL}{Endpoints.LOGIN}', json=user_data)
 
         with allure.step("Проверка ответа"):
-            assert response.status_code == 200, f"Ожидался статус 200, получен {response.status_code}"
-            assert response.json().get('success') is True, "Авторизация не удалась"
+            assert response.status_code == StatusCode.OK, f"Ожидался статус 200, получен {response.status_code}"
+            assert response.json().get(ResponseText.SUCCESS) is True, "Авторизация не удалась"
 
     @allure.story("Неуспешная авторизация пользователя")
     @allure.title("Авторизация незарегистрированного пользователя")
@@ -37,5 +38,5 @@ class TestLogin:
             response = requests.post(f'{Urls.BASE_URL}{Endpoints.LOGIN}', json=user_data)
 
         with allure.step("Проверка ответа"):
-            assert response.status_code == 401, f"Ожидался статус 401, получен {response.status_code}"
-            assert response.json().get('success') is False, "Авторизация прошла успешно, хотя не должна была"
+            assert response.status_code == StatusCode.UNAUTHORIZED, f"Ожидался статус 401, получен {response.status_code}"
+            assert response.json().get(ResponseText.SUCCESS) is False, "Авторизация прошла успешно, хотя не должна была"
