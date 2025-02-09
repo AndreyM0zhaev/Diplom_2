@@ -7,17 +7,17 @@
 - `API_desc` - директория, содержащая документацию API
 
 - `aps/` - папка вспомогательных функций:
-  - `aps/data_order.py`     - данные для работы с заказами
-  - `aps/data_response.py` - используемые статус коды
-  - `aps/data_user.py`        - данные для работы с пользователями
-  - `aps/endpoints.py`  - тестируемые ендпойнты
+  - `aps/data_order.py`             - данные для работы с заказами
+  - `aps/data_response.py`          - используемые статус коды
+  - `aps/data_user.py`              - данные для работы с пользователями
+  - `aps/endpoints.py`              - тестируемые ендпойнты
 
 - `tests/` - папка с файлами тестов:
   - `tests/test_create_user.py`     - проверки создания пользователя
-  - `tests/test_login_user.py`      - проверки аутентификации пользователя
-  - `tests/test_update_user.py`     - проверки обновления данных пользователя
+  - `tests/test_log_in_user`        - проверки аутентификации пользователя
+  - `tests/test_user_update.py`     - проверки обновления данных пользователя
   - `tests/test_create_order.py`    - проверки создания заказа
-  - `tests/test_get_user_orders.py` - проверки получения заказов пользователя
+  - `tests/test_get_user_order.py`  - проверки получения заказов пользователя
 
 
 - `conftest.py` - фикстуры
