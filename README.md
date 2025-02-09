@@ -42,7 +42,7 @@
 
 **Запуск тестов с генерацией отчета Allure выполняется командой:**
 
->  `$ pytest tests/ --alluredir=allure-results`
+>  `$ pytest -v ./tests  --alluredir=allure-results`
 
 **Генерация отчета выполняется командой:**
 
